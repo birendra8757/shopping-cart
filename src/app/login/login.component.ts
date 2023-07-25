@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { } from '@angular/fire/auth'
+import { AuthService } from '../auth.service';
+
 
 
 @Component({
@@ -9,9 +10,11 @@ import { } from '@angular/fire/auth'
 })
 export class LoginComponent {
 
+  constructor(private auth :AuthService){}
    
 
   login() {
-  
+    this.auth.login()
+    
 }
 }
