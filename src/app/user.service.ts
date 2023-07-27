@@ -1,25 +1,25 @@
+
+
 import { Injectable } from '@angular/core';
-import { User } from '@angular/fire/auth/firebase';
-import { AngularFireDatabase, AngularFireObject  } from '@angular/fire/compat/database';
+import { AngularFireDatabase,AngularFireObject,} from '@angular/fire/compat/database';
 import { AppUser } from './models/app-user';
+import { User } from '@angular/fire/auth';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export  class UserService {
+export class UserService {
+  constructor(private db: AngularFireDatabase) {}
 
-  constructor(private db: AngularFireDatabase) { }
-  save(user : User) {
-    this.db.object('/users' + user.uid).update({
+  save(user:User) {
+    this.db.object('/users/' + user.uid).update({
       name: user.displayName,
-      email: user.email
-      
-    })
-  
+      email: user.email,
+      // isAdmin:true
+    });
   }
 
-  get(uid: string) : AngularFireObject<AppUser> {
+  get(uid: string): AngularFireObject<AppUser> {
     return this.db.object('/users/' + uid);
   }
-
 }
