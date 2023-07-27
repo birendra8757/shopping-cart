@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CategoryService } from '../../category.service';
 
 @Component({
   selector: 'app-product-form',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-form.component.css']
 })
 export class ProductFormComponent {
+
+  categories$
+  constructor(categoryService: CategoryService) {
+    this.categories$ = categoryService.getCategories();
+}
 
 }

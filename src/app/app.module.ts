@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import {NgbModal } from '@ng-bootstrap/ng-bootstrap';
+// import {NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -27,6 +27,7 @@ import { AuthGuard } from './auth-guard.service';
 import { UserService } from './user.service';
 import {  AdminAuthGuard } from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { CategoryService } from './category.service';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,11 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
         canActivate: [AuthGuard, AdminAuthGuard],
       },
       {
+        path: 'admin/products/new',
+        component: ProductFormComponent,
+        canActivate: [AuthGuard, AdminAuthGuard],
+      },
+      {
         path: 'admin/orders',
         component: AdminOrdersComponent,
         canActivate: [AuthGuard, AdminAuthGuard],
@@ -85,7 +91,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     ]),
     NgbModule,
   ],
-  providers: [AuthService, UserService, AuthGuard, AdminAuthGuard],
+  providers: [AuthService, UserService, AuthGuard, AdminAuthGuard,CategoryService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
