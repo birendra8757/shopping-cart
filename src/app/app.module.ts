@@ -28,6 +28,12 @@ import { UserService } from './user.service';
 import {  AdminAuthGuard } from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './category.service';
+import{ FormsModule} from '@angular/forms'
+import { ProductService } from './product.service';
+// import {CustomFormsModule } from 'ng2-validation'
+
+
+
 
 @NgModule({
   declarations: [
@@ -46,6 +52,8 @@ import { CategoryService } from './category.service';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    // CustomFormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
@@ -91,7 +99,14 @@ import { CategoryService } from './category.service';
     ]),
     NgbModule,
   ],
-  providers: [AuthService, UserService, AuthGuard, AdminAuthGuard,CategoryService],
+  providers: [
+    AuthService,
+    UserService,
+    AuthGuard,
+    AdminAuthGuard,
+    CategoryService,
+    ProductService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
