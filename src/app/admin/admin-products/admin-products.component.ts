@@ -9,6 +9,6 @@ import { ProductService } from 'src/app/product.service';
 export class AdminProductsComponent {
   products$;
   constructor(private productService: ProductService) {
-    this.products$ = this.productService.getAll();
+    this.products$ = this.productService.getAll()
   }
 }
